@@ -10,11 +10,11 @@ const main = async () => {
     waveCount = await waveContract.getTotalWaves();
     console.log(waveCount.toNumber());
 
-    let waveTxn = await waveContract.wave('A message!');
+    let waveTxn = await waveContract.wave('Pasta', 'One-Pot Vegetarian Pasta with Alfredo sauce');
     await waveTxn.wait(); // Wait for transaction to be mined
 
     const [_, randomPerson] = await hre.ethers.getSigners();
-    waveTxn = await waveContract.connect(randomPerson).wave('Another message!');
+    waveTxn = await waveContract.connect(randomPerson).wave('Pizza', 'Vegetarian with spinach and mushrooms');
     await waveTxn.wait(); // Wait for transaction to be mined
 
     let allWaves = await waveContract.getAllWaves();
